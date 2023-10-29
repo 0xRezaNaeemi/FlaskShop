@@ -1,18 +1,21 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
+
+from models.product import Product
 
 app = Blueprint('general', __name__)
 
 
 @app.route('/')
-def main():
-    return 'This is main page!'
+def home():
+    products = Product.query.all()
+    return render_template("home.html", products=products)
 
 
-@app.route('/contact')
+@app.route('/contact/')
 def contact():
-    return 'This is contact page!'
+    return render_template("contact.html")
 
 
-@app.route('/about')
+@app.route('/about/')
 def about():
-    return 'This is about page!'
+    return render_template("about.html")

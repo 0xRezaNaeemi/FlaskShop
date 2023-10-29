@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block header %}
+    <title>فروشگاه آنلاین</title>
+{% endblock %}
+{% block body %}
+    <h1>صفحه اصلی</h1>
+    {% for product in products %}
+    	{{ product.name }}
+    {% endfor %}
+
+{% endblock %}
