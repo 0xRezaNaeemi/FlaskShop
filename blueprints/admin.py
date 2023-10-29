@@ -12,7 +12,7 @@ def before_request():
         abort(403)
 
 
-@app.route('/admin/login', methods=["POST", "GET"])
+@app.route('/admin/login/', methods=["POST", "GET"])
 def login():
     if request.method == "POST":
         username = request.form.get('username', None)
@@ -20,23 +20,24 @@ def login():
 
         if username == config.ADMIN_USERNAME and password == config.ADMIN_PASSWORD:
             session['admin_login'] = username
-            return redirect("/admin/dashboard")
+            return redirect("/admin/dashboard/")
         else:
-            return redirect("/admin/login")
+            return redirect("/admin/login/")
 
     else:
         return render_template("admin/login.html")
 
 
-@app.route("/admin/dashboard")
+@app.route("/admin/dashboard/")
 def dashboard():
     return render_template("admin/dashboard.html")
 
 
-@app.route("/admin/dashboard/products", methods=["GET", "POST"])
-def products():
+@app.route("/admin/dashboard/products/", methods=["GET", "POST"])
+def product():
     if request.method == "GET":
-        return render_template("admin/products.html")
+        products = Product.query.all()
+        return render_template("admin/products.html", products=products)
     else:
         name = request.form.get("name", None)
         description = request.form.get("description", None)

@@ -3,7 +3,26 @@
     <title>Admin Products</title>
 {% endblock %}
 {% block body %}
-    <h1>Admin Products</h1>
+
+    <table style="border: 1px solid black">
+    <tr>
+        <th>نام</th>
+        <th>توضیحات</th>
+        <th>قیمت</th>
+        <th>فعال</th>
+    </tr>
+    {% for product in products %}
+    	<tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ "بله" if product.active == 1 else "خیر" }}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
 
     <form action="#" method="post">
         <input type="text" name="name" placeholder="نام محصول"><br>
