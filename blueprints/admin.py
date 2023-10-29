@@ -25,3 +25,10 @@ def dashboard():
     if session.get("admin_login", None) is None:
         abort(403)
     return render_template("admin/dashboard.html")
+
+
+@app.route("/admin/dashboard/products", methods=["GET"])
+def products():
+    if session.get("admin_login", None) is None:
+        abort(403)
+    return render_template("admin/products.html")
