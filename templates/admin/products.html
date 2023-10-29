@@ -4,4 +4,12 @@
 {% endblock %}
 {% block body %}
     <h1>Admin Products</h1>
+
+    <form action="#" method="post">
+        <input type="text" name="name" placeholder="نام محصول"><br>
+        <textarea name="description" placeholder="توضیحات محصول"></textarea><br>
+        <input type="number" name="price" placeholder="قیمت محصول"><br>
+        <label>فعال: </label> <input type="checkbox" value="1" name="active"><br>
+        <input type="submit">
+    </form>
 {% endblock %}
