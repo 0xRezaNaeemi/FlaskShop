@@ -26,4 +26,4 @@ with app.app_context():
 
 # runserver
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
