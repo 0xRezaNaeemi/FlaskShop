@@ -8,6 +8,8 @@ import extentions
 # create the app
 app = Flask(__name__)
 
+app.config["SECRET_KEY"] = config.SECRET_KEY
+
 # register blueprints
 app.register_blueprint(general)
 app.register_blueprint(user)
