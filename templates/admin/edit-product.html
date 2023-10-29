@@ -5,8 +5,9 @@
 {% block body %}
 
     <form action="#" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <input type="text" name="name" value="{{ product.name }}" placeholder="نام محصول"><br>
-        <textarea name="description"  placeholder="توضیحات محصول">{{ product.description }}</textarea><br>
+        <textarea name="description" placeholder="توضیحات محصول">{{ product.description }}</textarea><br>
         <input type="number" name="price" value="{{ product.price }}" placeholder="قیمت محصول"><br>
         <label>فعال: </label> <input type="checkbox" value="1" name="active" {{ "checked" if product.active == 1 }}><br>
         <input type="submit">

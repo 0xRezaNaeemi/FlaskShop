@@ -5,28 +5,29 @@
 {% block body %}
 
     <table style="border: 1px solid black">
-    <tr>
-        <th>نام</th>
-        <th>توضیحات</th>
-        <th>قیمت</th>
-        <th>فعال</th>
-        <th>ویرایش</th>
-    </tr>
-    {% for product in products %}
-    	<tr>
-        <td>{{ product.name }}</td>
-        <td>{{ product.description }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ "بله" if product.active == 1 else "خیر" }}</td>
-        <td><a href="/admin/dashboard/edit-product/{{ product.id }}">ویرایش</a> </td>
+        <tr>
+            <th>نام</th>
+            <th>توضیحات</th>
+            <th>قیمت</th>
+            <th>فعال</th>
+            <th>ویرایش</th>
         </tr>
-    {% endfor %}
+        {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ "بله" if product.active == 1 else "خیر" }}</td>
+                <td><a href="/admin/dashboard/edit-product/{{ product.id }}">ویرایش</a></td>
+            </tr>
+        {% endfor %}
 
     </table>
 
 
 
     <form action="#" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <input type="text" name="name" placeholder="نام محصول"><br>
         <textarea name="description" placeholder="توضیحات محصول"></textarea><br>
         <input type="number" name="price" placeholder="قیمت محصول"><br>

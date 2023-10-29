@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_wtf import CSRFProtect
 from blueprints.general import app as general
 from blueprints.user import app as user
 from blueprints.admin import app as admin
@@ -9,6 +10,9 @@ import extentions
 app = Flask(__name__)
 
 app.config["SECRET_KEY"] = config.SECRET_KEY
+
+# csrf token
+csrf = CSRFProtect(app)
 
 # register blueprints
 app.register_blueprint(general)
@@ -27,3 +31,4 @@ with app.app_context():
 # runserver
 if __name__ == '__main__':
     app.run(debug=True)
+
